@@ -9,8 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 - Install [Node](https://nodejs.org/en/)
-- (Linux ONLY) Install [Docker Engine](https://docs.docker.com/engine/install/#server) and [Docker Compose](https://docs.docker.com/compose/install/#install-compose)
-- (MacOS or Windows ONLY) Install [Docker Desktop](https://docs.docker.com/desktop/)
+- Install [Docker Desktop](https://docs.docker.com/desktop/)
 
 ### Install and Run
 
@@ -24,7 +23,7 @@ To have a copy of this project up and running, follow the instructions below
 
 - With your Docker already configured and running, start the project with the command
 
-```docker-compose up -d```
+```docker compose up -d```
 
 ## How To Use
 
@@ -137,6 +136,6 @@ DELETE:{{base_url}}/currency/BRL
 - Complete postman collection with response examples [here](https://github.com/danirocha/challenge-bravo/blob/main/docs/challenge_bravo_2021-06-30.postman_collection)
 
 ### Commands that can help you cope with some problems:
-- `docker-compose down` - Stops all docker services that are running
-- `docker-compose logs` - Shows the logs of all running services
+- `docker compose down` - Stops all docker services that are running
+- `docker compose logs` - Shows the logs of all running services
 - `docker ps -a` - Show status of all your Docker containers, even the stoped ones
