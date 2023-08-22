@@ -1,9 +1,9 @@
 {
-  "name": "challenge-bravo",
-  "version": "1.0.0",
+  "name": "currencies-conversion-service",
+  "version": "0.0.1",
   "description": "A REST API for currencies' conversion using Node.js",
   "main": "App.js",
-  "repository": "git@github.com:danirocha/challenge-bravo.git",
+  "repository": "git@github.com:danirocha/currencies-conversion-service.git",
   "author": "Daniela Rocha <danirocha.rmd@gmail.com>",
   "license": "MIT",
   "scripts": {
