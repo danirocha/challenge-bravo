@@ -7,7 +7,15 @@ jest.mock('../integrations/database');
 
 global.utils = utils;
 
-const CurrencyService = new _CurrencyService(CurrencyDB);
+const currencyQuoteApi = {
+    listCurrenciesQuoteByCode: jest.fn()
+};
+const cache = {
+    get: jest.fn(),
+    set: jest.fn(),
+    delete: jest.fn(),
+};
+const CurrencyService = new _CurrencyService(CurrencyDB, currencyQuoteApi, cache);
 
 describe('#storeCurrency', () => {
     test('it throws an error when the currency is already registered', async () => {
