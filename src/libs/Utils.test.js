@@ -76,3 +76,46 @@ describe('#arrayAContainsB', () => {
         }
     });
 });
+
+describe('#formatObjectToKeyValue', () => {
+    test("it returns [{ key: 'name', val: 'Dani' }] when passed { name: 'Dani' }", () => {
+        const obj = {
+            name: 'Dani'
+        };
+
+        try {
+            const result = Utils.formatObjectToKeyValue(obj);
+            const [ nameObj ] = result;
+
+            expect(result).toBeTruthy()
+            expect(result.length).toBe(1);
+            expect(nameObj).toBeTruthy();
+            expect(nameObj).toHaveProperty('key', 'name');
+            expect(nameObj).toHaveProperty('val', 'Dani');
+        } catch (err) {
+            expect(err).toBeFalsy();
+        }
+    });
+    test("it returns [{ key: 'name', val: 'Dani' }, { key: 'age', val: 26 }] when passed { name: 'Dani', age: 26 }", () => {
+        const obj = {
+            name: 'Dani',
+            age: 26
+        };
+
+        try {
+            const result = Utils.formatObjectToKeyValue(obj);
+            const [ nameObj, ageObj ] = result;
+
+            expect(result).toBeTruthy()
+            expect(result.length).toBe(2);
+            expect(nameObj).toBeTruthy();
+            expect(nameObj).toHaveProperty('key', 'name');
+            expect(nameObj).toHaveProperty('val', 'Dani');
+            expect(ageObj).toBeTruthy();
+            expect(ageObj).toHaveProperty('key', 'age');
+            expect(ageObj).toHaveProperty('val', 26);
+        } catch (err) {
+            expect(err).toBeFalsy();
+        }
+    });
+});

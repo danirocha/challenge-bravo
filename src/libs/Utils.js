@@ -12,6 +12,19 @@ class Utils {
     arrayAContainsB (arrayA, arrayB) {
         return arrayB.every(item => arrayA.includes(item));
     }
+
+    formatObjectToKeyValue (dataObj) {
+        const entries = Object.entries(dataObj); 
+        
+        return entries.reduce((acc, item) => {
+            acc.push({
+                key: item[0],
+                val: item[1]
+            });
+
+            return acc;
+        }, []);
+    }
 }
 
 export default new Utils();

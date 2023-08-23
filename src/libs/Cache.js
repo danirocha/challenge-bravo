@@ -1,29 +1,18 @@
 import NodeCache from 'node-cache';
 import config from '../config/cache';
+import utils from './Utils';
 
 class Cache {
     constructor () {
         this.cache = new NodeCache(config.data);
     }
 
-    _formatData (dataObj) {
-        const entries = Object.entries(dataObj); 
-        
-        return entries.reduce((acc, item) => {
-            acc.push({
-                key: item[0],
-                val: item[1],
-                ttl: config.TTL
-            });
-
-            return acc;
-        }, []);
-    }
-
     set (dataObj) {
-        const dataList = this._formatData(dataObj);
+        const dataList = utils.formatObjectToKeyValue(dataObj);
 
-        this.cache.mset(dataList);
+        if (dataList.length) {
+            this.cache.mset(dataList.map(data => ({ ...data, ttl: config.TTL})));
+        }
     }
 
     get (dataKey) {
