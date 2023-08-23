@@ -3,7 +3,7 @@ import Fetch from '../../libs/Fetch';
 export default class CurrencyQuoteAPI {
     constructor (CurrencyMapper) {
         this.CurrencyMapper = CurrencyMapper;
-        this.baseURL = 'https://economia.awesomeapi.com.br/json/last/';
+        this.baseURL = process.env.CURRENCY_QUOTE_BASE_URL;
     }
 
     _generateUrl (backingCurrencyCode, currenciesCodes) {
