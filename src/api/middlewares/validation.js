@@ -1,5 +1,5 @@
 import Schema from '../../libs/Schema';
-import Message from '../../libs/ResMessage';
+import { BAD_REQUEST } from '../ResMessages';
 
 const currency = async (req, res, next) => {
     const currencyDTO = req.body;
@@ -10,9 +10,7 @@ const currency = async (req, res, next) => {
 
         next();
     } catch (err) {
-        const errMessage = Message.badRequest({ error: { errors: err.errors } });
-
-        return res.sendResponse(errMessage);
+        return res.sendResponse({ ...BAD_REQUEST, error: { errors: err.errors } });
     }
 };
 
@@ -25,9 +23,7 @@ const currencyConversion = async (req, res, next) => {
 
         next();
     } catch (err) {
-        const errMessage = Message.badRequest({ error: { errors: err.errors } });
-
-        return res.sendResponse(errMessage);
+        return res.sendResponse({ ...BAD_REQUEST, error: { errors: err.errors } });
     }
 };
 

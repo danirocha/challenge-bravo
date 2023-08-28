@@ -1,4 +1,4 @@
-import Message from '../../libs/ResMessage';
+import { SUCCESS, INTERNAL_ERROR, UNPROCESSABLE_ENTITY } from '../ResMessages';
 
 export default class CurrencyConversion {
     constructor (CurrencyService) {
@@ -10,18 +10,10 @@ export default class CurrencyConversion {
             const { from, to, amount } = req.query;
 
             const convertedAmount = await this.CurrencyService.convertsAmountBetweenCurrencies(from, to, +amount);
-
-            const resMessage = Message.success({ data: convertedAmount });
             
-            return res.sendResponse(resMessage);
+            return res.sendResponse({ ...SUCCESS, data: convertedAmount });
         } catch (err) {
-            let errMessage = Message.internalError();
-
-            if (err.unknow_source) {
-                errMessage = Message.unprocessableEntity({ message: "Invalid conversion: currencies' codes are unknown" });
-            }
-
-            return res.sendResponse(errMessage);
+            return res.sendResponse(err.unknow_source ? { ...UNPROCESSABLE_ENTITY, message: "Invalid conversion: currencies' codes are unknown" } : INTERNAL_ERROR);
         }
     }
 };
